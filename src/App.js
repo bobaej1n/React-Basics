@@ -8,11 +8,21 @@ function App() {
   let posts = "강남 고기 맛집";
   let [좋아요, 좋아요변경] = useState(0);
 
+  let [modal, modal변경] = useState(false);
+
   //function 제목바꾸기() {
   //  var newArray = [...글제목];
   //  newArray[0] = '여자 코트 추천';
   //  글제목변경(newArray);
   //}
+
+  function modal토글(status) {
+    status === false
+    ? modal = true
+    : modal = false
+
+    return modal
+  }
 
   return (
     <div className="App">
@@ -30,12 +40,25 @@ function App() {
         <hr/>
       </div>
       <div className='list'>
-        <h3> { 글제목[2] } </h3>
+        <h3 onClick={ ()=>{ modal변경(true) } }> { 글제목[2] } </h3>
         <p>2월 19일 발행</p>
         <hr/>
       </div>
 
-      <Modal />
+      {/*
+        modal === true
+        ? <Modal />
+        : null 
+      */}
+
+      {<button onClick={ ()=>{ modal변경(modal토글(modal)) } }>버튼(나)</button> } { /* 내 코드 */ }
+      <button onClick={ ()=>{ modal변경(!modal) } }>버튼(코딩애플)</button> { /* 코딩애플 코드 */ }
+      
+      {
+        modal === true
+        ? <Modal />
+        : null 
+      }
 
     </div>
   );
