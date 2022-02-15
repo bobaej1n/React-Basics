@@ -16,6 +16,19 @@ function App() {
   //  글제목변경(newArray);
   //}
 
+  // 반복문 사용 방법2
+  function 반복된UI() {
+
+    var 어레이 = [];
+
+    for (var i = 0; i < 3; i++) {
+      어레이.push(<div>안녕</div>);
+    }
+
+    return 어레이
+  }
+
+  // 내 방법
   function modal토글(status) {
     status === false
     ? modal = true
@@ -51,13 +64,31 @@ function App() {
         : null 
       */}
 
-      {<button onClick={ ()=>{ modal변경(modal토글(modal)) } }>버튼(나)</button> } { /* 내 코드 */ }
+      <button onClick={ ()=>{ modal변경(modal토글(modal)) } }>버튼(나)</button> { /* 내 코드 */ }
       <button onClick={ ()=>{ modal변경(!modal) } }>버튼(코딩애플)</button> { /* 코딩애플 코드 */ }
       
       {
         modal === true
         ? <Modal />
         : null 
+      }
+
+      {
+        // 반복문 사용 방법 1: map() 함수 사용
+        글제목.map(function(글){
+          return (
+          <div className='list'>
+            <h3> { 글 } </h3>
+            <p>2월 18일 발행</p>
+            <hr/>
+          </div>
+          )
+        })
+      }
+
+      {
+        // 반복문 사용 방법 2: for문 사용
+        //반복된UI()
       }
 
     </div>
